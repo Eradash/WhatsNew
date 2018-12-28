@@ -6,20 +6,39 @@
     android:orientation="vertical"
     android:padding="32dp">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        style="@style/TextAppearance.AppCompat.Title"
+    <LinearLayout
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
-        android:padding="8dp"
-        tools:text="What's New" />
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/titleIcon"
+            android:layout_width="10dp"
+            android:layout_height="60dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            tools:text="What's New" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/itemsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleTextView"
+        android:layout_below="@id/title"
         android:layout_marginBottom="48dp"
         android:layout_marginTop="16dp"
         android:overScrollMode="never"

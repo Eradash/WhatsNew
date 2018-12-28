@@ -4,11 +4,13 @@ import android.graphics.Color
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.DialogFragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import io.github.tonnyl.whatsnew.adapter.ItemsAdapter
 import io.github.tonnyl.whatsnew.item.WhatsNewItem
@@ -29,6 +31,7 @@ class WhatsNew : DialogFragment() {
     var buttonBackground: Int = Color.parseColor("#000000")
     var buttonText: String = "Continue"
     var buttonTextColor: Int = Color.parseColor("#FFEB3B")
+    var titleIconId: Int? = null
 
     private val TAG = "WhatsNew"
 
@@ -61,6 +64,13 @@ class WhatsNew : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.whatsnew_main, container, false)
+
+        with(view.findViewById<ImageView>(R.id.titleIcon)){
+            if(titleIconId != null && context != null){
+                setImageDrawable(ContextCompat.getDrawable(context, titleIconId!!))
+                visibility = View.VISIBLE
+            }
+        }
 
         // The title text view.
         with(view.findViewById<TextView>(R.id.titleTextView)) {
